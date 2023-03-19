@@ -1,0 +1,14 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.container{
+  display: flex;
+  align-items: center;
+  span{
+    margin-left: 5px;
+  }
+}
+.no-select{
+  cursor: pointer;
+  user-select: none;
+}

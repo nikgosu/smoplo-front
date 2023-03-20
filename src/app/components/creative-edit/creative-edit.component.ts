@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
 })
 export class CreativeEditComponent {
   form$!: Observable<any>
-  positions: any[] = ['Programmer', 'Businness Analyst', 'Designer', 'DBA'];
+  animations: any[] = ['from top', 'from bottom', 'rotate Z', 'scale'];
 
   constructor(
     private route: ActivatedRoute,

@@ -48,3 +48,5 @@ export const CREATIVES_MOCK = [
     __v: 0
   },
 ]
+
+export const BASE_URL = 'http://localhost:3000/api/creative'

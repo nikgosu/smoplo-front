@@ -7,20 +7,13 @@
   <div class="controls">
     <form class="example-form" [formGroup]="form">
       <app-form-input [control]="form.get('name')" [name]="'name'" [type]="'url'"></app-form-input>
-      <mat-form-field appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <mat-select formControl="animation" name="food">
-          <mat-option *ngFor="let food of positions" [value]="food.value">
-            {{food.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <app-form-input [control]="form.get('animation')" [name]="'Animation'" [type]="'text'"></app-form-input>
-      <app-form-input [control]="form.get('horizontalPos')" [name]="'horizontalPos'" [type]="'number'"></app-form-input>
-      <app-form-input [control]="form.get('imageSize')" [name]="'imageSize'" [type]="'number'"></app-form-input>
-      <app-form-input [control]="form.get('verticalPos')" [name]="'verticalPos'" [type]="'number'"></app-form-input>
-      <app-form-input [control]="form.get('width')" [name]="'width'" [type]="'number'"></app-form-input>
+      <app-select [control]="form.get('animation')" [options]="animations"></app-select>
+      <app-slider [control]="form.get('horizontalPos')" [max]="100" [min]="-100">Horizontal Position</app-slider>
+      <app-slider [control]="form.get('verticalPos')" [max]="100" [min]="-100">Vertical Position</app-slider>
+      <app-slider [control]="form.get('imageSize')" [max]="100" [min]="0">Image Size</app-slider>
+      <app-slider [control]="form.get('width')" [max]="100" [min]="0">Width</app-slider>
       <app-form-input [control]="form.get('imageSrc')" [name]="'imageSrc'" [type]="'text'"></app-form-input>
+      <button class="button" mat-flat-button color="accent">Save creative</button>
     </form>
   </div>
 </div>

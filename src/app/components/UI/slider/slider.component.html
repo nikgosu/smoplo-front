@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="example-label-container">
+    <label id="example-name-label" class="example-name-label">
+      <ng-content></ng-content>
+    </label>
+    <label class="example-value-label">{{control.value}}</label>
+  </div>
+  <mat-slider
+    class="example-margin"
+    [max]="max"
+    [min]="min"
+    [step]="1"
+    [discrete]="true">
+    <input matSliderThumb [formControl]="control">
+  </mat-slider>
+</div>

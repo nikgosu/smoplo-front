@@ -9,7 +9,7 @@ export class HttpAPIService {
 
   constructor(private http: HttpClient) { }
   getCreative(id: string) {
-    return this.http.get(BASE_URL ,{
+    return this.http.get(BASE_URL + '_by_id',{
       params: {
         id
       }

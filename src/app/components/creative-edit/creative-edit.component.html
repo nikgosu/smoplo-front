@@ -13,7 +13,7 @@
       <app-slider [control]="form.get('imageSize')" [max]="100" [min]="0">Image Size</app-slider>
       <app-slider [control]="form.get('width')" [max]="100" [min]="0">Width</app-slider>
       <app-form-input [control]="form.get('imageSrc')" [name]="'imageSrc'" [type]="'text'"></app-form-input>
-      <button class="button" mat-flat-button color="accent">Save creative</button>
+      <button class="button" mat-flat-button color="accent" (click)="handleCreativeSave()">Save creative</button>
     </form>
   </div>
 </div>

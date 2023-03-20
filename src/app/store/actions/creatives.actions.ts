@@ -15,6 +15,8 @@ export enum ECreativesActions {
 
 export class GetCreative implements Action {
   public readonly type = ECreativesActions.GET_CREATIVE
+  constructor(public payload: string) {
+  }
 }
 
 export class GetCreativeSuccess implements Action {
@@ -35,6 +37,8 @@ export class GetCreativesSuccess implements Action {
 
 export class CreateCreative implements Action {
   public readonly type = ECreativesActions.CREATE_CREATIVE
+  constructor(public payload: any) {
+  }
 }
 
 export class CreateCreativeSuccess implements Action {
@@ -45,6 +49,8 @@ export class CreateCreativeSuccess implements Action {
 
 export class UpdateCreative implements Action {
   public readonly type = ECreativesActions.UPDATE_CREATIVE
+  constructor(public payload: any) {
+  }
 }
 
 export class UpdateCreativeSuccess implements Action {

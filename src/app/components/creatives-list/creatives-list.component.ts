@@ -10,9 +10,8 @@ import {GetCreatives} from "../../store/actions/creatives.actions";
   styleUrls: ['./creatives-list.component.scss']
 })
 export class CreativesListComponent {
-  creatives = CREATIVES_MOCK
-
   creatives$ = this._store.pipe(select(selectCreativesList))
+
   constructor(private _store: Store<any>) {
   }
   ngOnInit() {

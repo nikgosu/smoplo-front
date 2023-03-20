@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill">
   <mat-label>Animation</mat-label>
-  <mat-select [formControl]="control" name="food">
+  <mat-select (select)="handleOptionSelect($event + '')" [formControl]="control" name="food">
     <mat-option *ngFor="let option of options" [value]="control.value">
       {{option}}
     </mat-option>

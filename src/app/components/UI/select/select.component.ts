@@ -9,4 +9,8 @@ import {FormControl} from "@angular/forms";
 export class SelectComponent {
   @Input() control!: FormControl
   @Input() options!: any[]
+
+  handleOptionSelect(option: string) {
+    this.control.setValue(option)
+  }
 }

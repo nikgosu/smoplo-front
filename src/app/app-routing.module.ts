@@ -7,6 +7,7 @@ import {LoginComponent} from "./components/login/login.component";
 const routes: Routes = [
   {path: '', component: CreativesListComponent},
   {path: 'creative/:id', component: CreativeEditComponent},
+  {path: 'creative-new', component: CreativeEditComponent},
   {path: 'login', component: LoginComponent},
 ];
 

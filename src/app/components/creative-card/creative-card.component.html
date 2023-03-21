@@ -1,13 +1,15 @@
-<div>
+<div class="container">
   <mat-card class="example-card">
-    <mat-card-header >
+    <mat-card-header>
       <mat-card-title>{{creative.name}}</mat-card-title>
     </mat-card-header>
-    <img style="width: 200px; height: 200px" mat-card-image src="{{creative.imageSrc}}" alt="Photo of a Shiba Inu">
+    <img class="image" mat-card-image src="{{creative.imageSrc}}"
+    alt="Photo of a Shiba Inu">
     <mat-card-content>
     </mat-card-content>
     <mat-card-actions>
       <button mat-flat-button color="primary" routerLink="creative/{{creative._id}}">Edit</button>
+      <button mat-flat-button color="warn" (click)="handleCreativeDelete()">Delete</button>
     </mat-card-actions>
   </mat-card>
 </div>

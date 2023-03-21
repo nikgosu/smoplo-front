@@ -1,4 +1,6 @@
-export const initialCreativesState: any = {
-  creatives: null,
+import {CreativesState} from "./index";
+
+export const initialCreativesState: CreativesState = {
+  creatives: [],
   selectedCreative: null,
 }

@@ -1,8 +1,7 @@
 import {ActionReducerMap} from "@ngrx/store";
 import {creativesReducers} from "./creatives.reducers";
-import {configReducers} from "./config.reducers";
+import {AppState} from "../state";
 
-export const appReducers: ActionReducerMap<any, any> = {
+export const appReducers: ActionReducerMap<AppState, any> = {
   creatives: creativesReducers,
-  config: configReducers
 }

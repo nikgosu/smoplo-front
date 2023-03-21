@@ -1,10 +1,10 @@
 <div class="container" *ngIf="form$ | async as form">
-  <div class="creative-preview">
+  <div class="creative-preview" *ngIf="form.value">
     <div class="smoplo-tag">
-      <img src="{{form.value.imageSrc}}" alt="" width="100%" height="100%">
+      <img src="{{form.get('imageSrc').value}}" alt="" width="100%" height="100%">
     </div>
   </div>
-  <div class="controls">
+  <div class="controls" *ngIf="form.value">
     <form class="example-form" [formGroup]="form">
       <app-form-input [control]="form.get('name')" [name]="'name'" [type]="'url'"></app-form-input>
       <app-select [control]="form.get('animation')" [options]="animations"></app-select>

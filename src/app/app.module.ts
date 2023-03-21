@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {AppComponent} from './components/app/app.component';
-import {HttpAPIService} from "./services/http-api.service";
-import {CreativeService} from "./services/creative.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {StoreModule} from "@ngrx/store";
 import {appReducers} from "./store/reducers/app.reducers";
@@ -61,7 +59,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatListModule,
     HttpClientModule
   ],
-  providers: [HttpAPIService, CreativeService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

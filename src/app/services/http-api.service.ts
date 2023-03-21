@@ -1,31 +1,38 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BASE_URL} from "../../mock";
 import {HttpClient} from "@angular/common/http";
+import {CreativeModel} from "../models/creatives-model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpAPIService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
   getCreative(id: string) {
-    return this.http.get(BASE_URL + '_by_id',{
+    return this.http.get<CreativeModel>(BASE_URL + '_by_id', {
       params: {
         id
       }
     })
   }
+
   getCreatives() {
-    return this.http.get(BASE_URL)
+    return this.http.get<CreativeModel[]>(BASE_URL)
   }
-  createCreative(creative: any) {
-    return this.http.post(BASE_URL, creative)
+
+  createCreative(creative: CreativeModel) {
+    return this.http.post<CreativeModel>(BASE_URL, creative)
   }
-  updateCreative(creative: any) {
-    return this.http.put(BASE_URL, creative)
+
+  updateCreative(creative: CreativeModel) {
+    return this.http.put<CreativeModel>(BASE_URL, creative)
   }
+
   deleteCreative(id: string) {
-    return this.http.delete(BASE_URL, {
+    return this.http.delete<CreativeModel>(BASE_URL, {
       params: {
         id
       }

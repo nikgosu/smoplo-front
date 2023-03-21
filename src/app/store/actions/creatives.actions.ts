@@ -1,4 +1,5 @@
 import {Action} from "@ngrx/store";
+import {CreativeModel} from "../../models/creatives-model";
 
 export enum ECreativesActions {
   GET_CREATIVE = '[CREATIVE] Get Creative',
@@ -15,13 +16,15 @@ export enum ECreativesActions {
 
 export class GetCreative implements Action {
   public readonly type = ECreativesActions.GET_CREATIVE
+
   constructor(public payload: string) {
   }
 }
 
 export class GetCreativeSuccess implements Action {
   public readonly type = ECreativesActions.GET_CREATIVE_SUCCESS
-  constructor(public payload: any) {
+
+  constructor(public payload: CreativeModel) {
   }
 }
 
@@ -31,41 +34,50 @@ export class GetCreatives implements Action {
 
 export class GetCreativesSuccess implements Action {
   public readonly type = ECreativesActions.GET_CREATIVES_SUCCESS
-  constructor(public payload: any) {
+
+  constructor(public payload: CreativeModel[]) {
   }
 }
 
 export class CreateCreative implements Action {
   public readonly type = ECreativesActions.CREATE_CREATIVE
-  constructor(public payload: any) {
+
+  constructor(public payload: CreativeModel) {
   }
 }
 
 export class CreateCreativeSuccess implements Action {
   public readonly type = ECreativesActions.CREATE_CREATIVE_SUCCESS
-  constructor(public payload: any) {
+
+  constructor(public payload: CreativeModel) {
   }
 }
 
 export class UpdateCreative implements Action {
   public readonly type = ECreativesActions.UPDATE_CREATIVE
-  constructor(public payload: any) {
+
+  constructor(public payload: CreativeModel) {
   }
 }
 
 export class UpdateCreativeSuccess implements Action {
   public readonly type = ECreativesActions.UPDATE_CREATIVE_SUCCESS
-  constructor(public payload: any) {
+
+  constructor(public payload: CreativeModel) {
   }
 }
 
 export class DeleteCreative implements Action {
   public readonly type = ECreativesActions.DELETE_CREATIVE
+
+  constructor(public payload: string) {
+  }
 }
 
 export class DeleteCreativeSuccess implements Action {
   public readonly type = ECreativesActions.DELETE_CREATIVE_SUCCESS
-  constructor(public payload: any) {
+
+  constructor(public payload: CreativeModel) {
   }
 }
 

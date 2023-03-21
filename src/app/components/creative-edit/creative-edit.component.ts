@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {CREATIVES_MOCK} from "../../../mock";
 import {CreativeService} from "../../services/creative.service";
-import {Observable} from "rxjs";
+import {Observable, Subject, takeUntil} from "rxjs";
 import {select, Store} from "@ngrx/store";
-import {CreateCreative, GetCreative, GetCreatives, UpdateCreative} from "../../store/actions/creatives.actions";
-import {selectCreativesList, selectSelectedCreative} from "../../store/selectors/creatives.selector";
+import {CreateCreative, UpdateCreative} from "../../store/actions/creatives.actions";
+import {selectSelectedCreative} from "../../store/selectors/creatives.selector";
+import {ANIMATIONS} from "../../consts";
+import {AppState} from "../../store/state";
 
 @Component({
   selector: 'app-creative-edit',
@@ -14,38 +15,42 @@ import {selectCreativesList, selectSelectedCreative} from "../../store/selectors
 })
 export class CreativeEditComponent {
   form$!: Observable<any>
-  params!: string | null
-  animations: any[] = ['from top', 'from bottom', 'rotate Z', 'scale'];
+  animations = ANIMATIONS
   selectedCreative$ = this._store.pipe(select(selectSelectedCreative))
+  isCreativeFetched!: boolean
+  unsubscribe$ = new Subject<void>()
 
   constructor(
-    private route: ActivatedRoute,
-    private creativeService: CreativeService,
-    private _store: Store<any>
+    private _route: ActivatedRoute,
+    private _creativeService: CreativeService,
+    private _activatedRoute: ActivatedRoute,
+    private _store: Store<AppState>
   ) {
-    this.form$ = this.creativeService.form.asObservable()
+    this.form$ = this._creativeService.form.asObservable()
   }
 
   ngOnInit() {
-    this.params = this.route.snapshot.paramMap.get('id');
-    if (this.params) {
-      this._store.dispatch(new GetCreative(this.params))
-      this.selectedCreative$.subscribe(creative => {
-        this.creativeService.createForm(creative)
-      })
-    } else {
-      this.creativeService.createForm()
+    this.selectedCreative$.pipe(takeUntil(this.unsubscribe$)).subscribe((creative) => {
+      creative?.name && this._creativeService.createForm(creative)
+    })
+    this._activatedRoute.data.pipe(takeUntil(this.unsubscribe$)).subscribe(({isCreativeFetched}) => {
+      this.isCreativeFetched = isCreativeFetched
+    })
+    if (!this.isCreativeFetched) {
+      this._creativeService.createForm()
     }
   }
 
   handleCreativeSave() {
-    if (this.params) {
-      this._store.dispatch(new UpdateCreative(this.creativeService.form.value.value))
-      console.log(this.creativeService.form.value.value)
+    if (this.isCreativeFetched) {
+      this._store.dispatch(new UpdateCreative(this._creativeService.form.value.value))
+    } else {
+      this._store.dispatch(new CreateCreative(this._creativeService.form.value.value))
     }
-    else {
-      console.log(this.creativeService.form.value.value)
-      this._store.dispatch(new CreateCreative(this.creativeService.form.value.value))
-    }
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next()
+    this.unsubscribe$.complete()
   }
 }

@@ -1,14 +1,21 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-.container{
+
+.container {
   display: flex;
   align-items: center;
-  span{
+
+  span {
     margin-left: 5px;
   }
+
+  button:not(:first-child) {
+    margin-left: 10px;
+  }
 }
-.no-select{
+
+.no-select {
   cursor: pointer;
   user-select: none;
 }

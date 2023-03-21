@@ -1,10 +1,10 @@
 import {initialCreativesState} from "./creatives.state";
-import {initialConfigState} from "./config.state";
+import {AppState} from "./index";
 
-export const initialAppState: any = {
+export const initialAppState: AppState = {
   creatives: initialCreativesState,
-  config: initialConfigState
 }
-export function getInitialState (): any {
+
+export function getInitialState(): AppState {
   return initialAppState
 }

@@ -1,15 +1,16 @@
 import {createSelector} from "@ngrx/store";
+import {AppState, CreativesState} from "../state";
 
-const selectCreatives = (state: any) => {
+const selectCreatives = (state: AppState) => {
   return state.creatives
 }
 
 export const selectCreativesList = createSelector(
   selectCreatives,
-  (state: any) => state.creatives
+  (state: CreativesState) => state.creatives
 )
 
 export const selectSelectedCreative = createSelector(
   selectCreatives,
-  (state: any) => state.selectedCreative
+  (state: CreativesState) => state.selectedCreative
 )

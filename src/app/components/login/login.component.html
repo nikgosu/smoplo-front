@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div class="container">
+  <form [formGroup]="form">
+    <mat-list role="list">
+      <div class="inputs">
+        <app-form-input
+          [name]="'Email'"
+          [type]="'email'"
+          [control]="$any(form.get('email'))"
+        ></app-form-input>
+        <app-form-input
+          [name]="'Password'"
+          [type]="'password'"
+          [control]="$any(form.get('password'))"
+        ></app-form-input>
+      </div>
+      <div class="buttons">
+        <button mat-flat-button color="accent" (click)="handleRegister()">Register</button>
+        <button mat-flat-button color="primary" (click)="handleLogin()">Login</button>
+      </div>
+    </mat-list>
+  </form>
+</div>

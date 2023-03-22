@@ -27,6 +27,8 @@ import {FormInputComponent} from "./components/UI/form-input/form-input.componen
 import {SliderComponent} from "./components/UI/slider/slider.component";
 import {SelectComponent} from "./components/UI/select/select.component";
 import {HttpClientModule} from "@angular/common/http";
+import {UserEffects} from "./store/effects/user.effects";
+import { FormControlPipe } from './pipes/form-control.pipe';
 
 @NgModule({
   declarations: [
@@ -39,11 +41,12 @@ import {HttpClientModule} from "@angular/common/http";
     FormInputComponent,
     SliderComponent,
     SelectComponent,
+    FormControlPipe,
   ],
   imports: [
     AppRoutingModule,
     StoreModule.forRoot(appReducers, {}),
-    EffectsModule.forRoot([CreativesEffects]),
+    EffectsModule.forRoot([CreativesEffects, UserEffects]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,

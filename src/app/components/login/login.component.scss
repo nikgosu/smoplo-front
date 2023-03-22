@@ -1,0 +1,37 @@
+:host{
+  height: 100%;
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    mat-list{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px 80px;
+      border: 1px solid rgba(0, 0, 0, 0.27);
+      border-radius: 10px;
+      background-color: rgba(16, 89, 89, 0.18);
+
+      .inputs{
+        app-form-input{
+          width: 50%;
+        }
+      }
+
+      .buttons{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0;
+
+        button{
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+

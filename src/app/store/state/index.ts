@@ -5,6 +5,11 @@ export interface CreativesState {
   selectedCreative: CreativeModel | null
 }
 
+export interface UserState {
+  user: any
+}
+
 export interface AppState {
-  creatives: CreativesState
+  creatives: CreativesState,
+  user: any
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {BASE_URL} from "../../mock";
 import {HttpClient} from "@angular/common/http";
 import {CreativeModel} from "../models/creatives-model";
+import {BASE_URL, GET_AUTH_URL, LOGIN_URL, REGISTER_URL} from "../consts";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,20 @@ import {CreativeModel} from "../models/creatives-model";
 export class HttpAPIService {
 
   constructor(private http: HttpClient) {
+  }
+
+  getIsAuth(token: any) {
+    return this.http.get<any>(GET_AUTH_URL, {
+      headers: {Authorization: `Bearer:${token}`}
+    })
+  }
+
+  login(user: any) {
+    return this.http.post<any>(LOGIN_URL, user)
+  }
+
+  register(user: any) {
+    return this.http.post<any>(REGISTER_URL, user)
   }
 
   getCreative(id: string) {

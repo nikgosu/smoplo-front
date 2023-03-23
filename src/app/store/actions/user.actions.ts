@@ -8,6 +8,7 @@ export enum EUserActions {
   LOGIN_SUCCESS = '[USER] Login Success',
   GET_IS_AUTH = '[USER] Get Is Auth',
   GET_IS_AUTH_SUCCESS = '[USER] Get Is Auth Success',
+  LOGOUT_SUCCESS = '[USER] Logout Success',
 }
 
 export class CreateUser implements Action {
@@ -52,8 +53,13 @@ export class GetIsAuthSuccess implements Action {
   }
 }
 
+export class LogoutSuccess implements Action {
+  public readonly type = EUserActions.LOGOUT_SUCCESS
+}
+
 
 export type UserActions =
   CreateUser | CreateUserSuccess |
   Login | LoginSuccess |
-  GetIsAuth | GetIsAuthSuccess
+  GetIsAuth | GetIsAuthSuccess |
+  LogoutSuccess

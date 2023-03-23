@@ -13,7 +13,7 @@ export class HttpAPIService {
 
   getIsAuth(token: any) {
     return this.http.get<any>(GET_AUTH_URL, {
-      headers: {Authorization: `Bearer:${token}`}
+      headers: {Authorization: token}
     })
   }
 
@@ -26,11 +26,7 @@ export class HttpAPIService {
   }
 
   getCreative(id: string) {
-    return this.http.get<CreativeModel>(BASE_URL + '_by_id', {
-      params: {
-        id
-      }
-    })
+    return this.http.get<CreativeModel>(BASE_URL + '/by_id', {params: {id}})
   }
 
   getCreatives() {
@@ -46,10 +42,6 @@ export class HttpAPIService {
   }
 
   deleteCreative(id: string) {
-    return this.http.delete<CreativeModel>(BASE_URL, {
-      params: {
-        id
-      }
-    })
+    return this.http.delete<CreativeModel>(BASE_URL, {params: {id}})
   }
 }

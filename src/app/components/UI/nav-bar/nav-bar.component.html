@@ -5,7 +5,28 @@
   </div>
   <span class="example-spacer"></span>
   <div class="container no-select">
-    <button mat-flat-button color="accent" routerLink="creative-new">New</button>
-    <button mat-flat-button color="accent" routerLink="login">Login</button>
+    <button
+      mat-flat-button color="accent"
+      routerLink="creative-new"
+    >
+      New
+    </button>
+    <button
+      *ngIf="!isAuth"
+      mat-flat-button
+      color="accent"
+      routerLink="login"
+    >
+      Login
+    </button>
+    <button
+      *ngIf="isAuth"
+      mat-flat-button
+      color="warn"
+      routerLink="login"
+      (click)="logout()"
+    >
+      Logout
+    </button>
   </div>
 </mat-toolbar>

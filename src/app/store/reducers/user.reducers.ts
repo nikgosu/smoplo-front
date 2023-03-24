@@ -21,9 +21,6 @@ export const userReducers = (state = initialUserState, action: UserActions): Use
       }
     }
     case EUserActions.GET_IS_AUTH_SUCCESS: {
-      localStorage.removeItem('token')
-      localStorage.getItem('token')
-      console.log(action.payload)
       return {
         ...state,
         user: action.payload

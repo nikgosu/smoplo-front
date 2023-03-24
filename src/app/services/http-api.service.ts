@@ -13,7 +13,7 @@ export class HttpAPIService {
 
   getIsAuth(token: any) {
     return this.http.get<any>(GET_AUTH_URL, {
-      headers: {Authorization: token}
+      headers: {Authorization: 'Bearer: ' + token}
     })
   }
 

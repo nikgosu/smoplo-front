@@ -9,5 +9,5 @@ import {Animation} from "../../../models/creatives-model";
 })
 export class SelectComponent {
   @Input() control!: FormControl
-  @Input() options!: Animation[]
+  @Input() options!: any[]
 }

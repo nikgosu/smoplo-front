@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>{{props.title}}</h1>
+<div
+  mat-dialog-content
+  *ngIf="form$ | async as form"
+>
+  <form [formGroup]="form">
+    <app-form-input [control]="form.get('name')" [name]="'name'" [type]="'text'"></app-form-input>
+    <app-form-input [control]="form.get('campaign')" [name]="'campaign'" [type]="'text'"></app-form-input>
+    <app-select [control]="form.get('size')" [options]="props.sizes"></app-select>
+  </form>
+</div>
+<div class="buttons" mat-dialog-actions>
+  <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="accent" mat-dialog-close cdkFocusInitial>Save</button>
+</div>

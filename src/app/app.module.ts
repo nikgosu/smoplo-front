@@ -31,6 +31,8 @@ import {UserEffects} from "./store/effects/user.effects";
 import { FormControlPipe } from './pipes/form-control.pipe';
 import { SidebarComponent } from './components/UI/sidebar/sidebar.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import { DialogComponent } from './components/UI/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     SelectComponent,
     FormControlPipe,
     SidebarComponent,
+    DialogComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -64,7 +67,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     BrowserModule,
     MatListModule,
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

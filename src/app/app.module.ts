@@ -28,11 +28,12 @@ import {SliderComponent} from "./components/UI/slider/slider.component";
 import {SelectComponent} from "./components/UI/select/select.component";
 import {HttpClientModule} from "@angular/common/http";
 import {UserEffects} from "./store/effects/user.effects";
-import { FormControlPipe } from './pipes/form-control.pipe';
-import { SidebarComponent } from './components/UI/sidebar/sidebar.component';
+import {FormControlPipe} from './pipes/form-control.pipe';
+import {SidebarComponent} from './components/UI/sidebar/sidebar.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { DialogComponent } from './components/UI/dialog/dialog.component';
+import {DialogComponent} from './components/UI/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {CampaignsEffects} from "./store/effects/campaigns.effects";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import {MatDialogModule} from '@angular/material/dialog';
   imports: [
     AppRoutingModule,
     StoreModule.forRoot(appReducers, {}),
-    EffectsModule.forRoot([CreativesEffects, UserEffects]),
+    EffectsModule.forRoot([CreativesEffects, UserEffects, CampaignsEffects]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,

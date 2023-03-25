@@ -1,11 +1,8 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CreativeService} from "../../services/creative.service";
-import {Observable, Subject, takeUntil} from "rxjs";
-import {Store} from "@ngrx/store";
-import {CreateCreative, UpdateCreative} from "../../store/actions/creatives.actions";
+import {first, Observable} from "rxjs";
 import {ANIMATIONS} from "../../consts";
-import {AppState} from "../../store/state";
 
 @Component({
   selector: 'app-creative-edit',
@@ -16,18 +13,16 @@ export class CreativeEditComponent {
   form$!: Observable<any>
   animations = ANIMATIONS
   selectedCreative!: any
-  unsubscribe$ = new Subject<void>()
 
   constructor(
     private _creativeService: CreativeService,
     private _activatedRoute: ActivatedRoute,
-    private _store: Store<AppState>
   ) {
     this.form$ = this._creativeService.form.asObservable()
   }
 
   ngOnInit() {
-    this._activatedRoute.data.pipe(takeUntil(this.unsubscribe$)).subscribe(({creative}) => {
+    this._activatedRoute.data.pipe(first()).subscribe(({creative}) => {
       this.selectedCreative = creative
       creative && this._creativeService.createForm(creative)
       if (!creative) {
@@ -39,14 +34,9 @@ export class CreativeEditComponent {
 
   handleCreativeSave() {
     if (this.selectedCreative) {
-      this._store.dispatch(new UpdateCreative(this._creativeService.form.value.value))
+      this._creativeService.createCreative()
     } else {
-      this._store.dispatch(new CreateCreative(this._creativeService.form.value.value))
+      this._creativeService.updateCreative()
     }
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next()
-    this.unsubscribe$.complete()
   }
 }

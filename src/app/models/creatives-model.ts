@@ -9,6 +9,9 @@ export interface CreativeModel {
   width: number
   imageSrc: string
   __v?: string
+  userId: string
+  campaignId: string
+  placementId: string
 }
 
 export interface Animation {

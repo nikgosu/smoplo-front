@@ -38,6 +38,7 @@ const campaignsRoutes = [
 ]
 
 export const ROUTES: Routes = [
+  { path: '', redirectTo: ERoutes.CAMPAIGNS, pathMatch: 'full' },
   ...creativesRoutes,
   ...placementsRoutes,
   ...campaignsRoutes,

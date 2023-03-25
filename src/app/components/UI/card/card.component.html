@@ -4,8 +4,19 @@
       <mat-card-title>{{listItem.name}}</mat-card-title>
     </mat-card-header>
     <mat-card-actions align="end">
-      <button mat-flat-button color="primary" routerLink="creative/{{listItem._id}}">Edit</button>
-      <button mat-flat-button color="warn" (click)="handleDelete()">Delete</button>
+      <button
+        mat-flat-button color="primary"
+        routerLink="{{isCreatives ? 'creative/' + listItem._id : '/placements'}}"
+      >
+        {{isCreatives ? 'Edit' : 'Open'}}
+      </button>
+      <button
+        mat-flat-button
+        color="warn"
+        (click)="handleDelete()"
+      >
+        Delete
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

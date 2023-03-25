@@ -32,11 +32,11 @@ export class ListComponent {
       width: '600px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: this.getDialogTitle()
+      data: this.getDialogData()
     });
   }
 
-  getDialogTitle() {
+  getDialogData() {
     switch (this.path) {
       case ERoutes.CAMPAIGNS:
         return {title: 'Create Campaign', type: ERoutes.CAMPAIGNS}

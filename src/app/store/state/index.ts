@@ -1,5 +1,10 @@
 import {CreativeModel} from "../../models/creatives-model";
 
+export interface CampaignsState {
+  campaigns: any[]
+  selectedCampaign: any | null
+}
+
 export interface CreativesState {
   creatives: CreativeModel[]
   selectedCreative: CreativeModel | null
@@ -10,6 +15,7 @@ export interface UserState {
 }
 
 export interface AppState {
-  creatives: CreativesState,
   user: any
+  campaigns: CampaignsState
+  creatives: CreativesState,
 }

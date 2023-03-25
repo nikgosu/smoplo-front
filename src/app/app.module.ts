@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {AppComponent} from './components/app/app.component';
-import {AppRoutingModule} from "./app-routing.module";
+import {AppRoutingModule} from "./router/app-routing.module";
 import {StoreModule} from "@ngrx/store";
 import {appReducers} from "./store/reducers/app.reducers";
 import {EffectsModule} from "@ngrx/effects";
@@ -19,8 +19,8 @@ import {MatSliderModule} from "@angular/material/slider";
 import {BrowserModule} from "@angular/platform-browser";
 import {MatListModule} from "@angular/material/list";
 import {NavBarComponent} from "./components/UI/nav-bar/nav-bar.component";
-import {CreativesListComponent} from "./components/creatives-list/creatives-list.component";
-import {CreativeCardComponent} from "./components/creative-card/creative-card.component";
+import {ListComponent} from "./components/list/list.component";
+import {CardComponent} from "./components/card/card.component";
 import {CreativeEditComponent} from "./components/creative-edit/creative-edit.component";
 import {LoginComponent} from "./components/login/login.component";
 import {FormInputComponent} from "./components/UI/form-input/form-input.component";
@@ -29,19 +29,22 @@ import {SelectComponent} from "./components/UI/select/select.component";
 import {HttpClientModule} from "@angular/common/http";
 import {UserEffects} from "./store/effects/user.effects";
 import { FormControlPipe } from './pipes/form-control.pipe';
+import { SidebarComponent } from './components/UI/sidebar/sidebar.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    CreativesListComponent,
-    CreativeCardComponent,
+    ListComponent,
+    CardComponent,
     CreativeEditComponent,
     LoginComponent,
     FormInputComponent,
     SliderComponent,
     SelectComponent,
     FormControlPipe,
+    SidebarComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -60,7 +63,8 @@ import { FormControlPipe } from './pipes/form-control.pipe';
     MatSliderModule,
     BrowserModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

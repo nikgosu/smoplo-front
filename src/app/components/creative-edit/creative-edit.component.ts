@@ -21,7 +21,6 @@ export class CreativeEditComponent {
   unsubscribe$ = new Subject<void>()
 
   constructor(
-    private _route: ActivatedRoute,
     private _creativeService: CreativeService,
     private _activatedRoute: ActivatedRoute,
     private _store: Store<AppState>

@@ -1,0 +1,3 @@
+<div class="container">
+  <app-creative-card *ngFor="let listItem of (data$ | async)?.['list']" [listItem]="listItem"></app-creative-card>
+</div>

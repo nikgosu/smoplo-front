@@ -1,0 +1,21 @@
+:host{
+  width: 100%;
+
+  .container {
+    .example-card {
+      width: 100%;
+      box-shadow: none;
+    }
+
+    mat-card {
+      background-color: rgba(16, 89, 89, 0.18);
+      margin-left: 5px;
+
+      mat-card-actions {
+        button{
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

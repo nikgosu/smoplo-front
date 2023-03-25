@@ -1,0 +1,12 @@
+<div class="container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{listItem.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-flat-button color="primary" routerLink="creative/{{listItem._id}}">Edit</button>
+      <button mat-flat-button color="warn" (click)="handleDelete()">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

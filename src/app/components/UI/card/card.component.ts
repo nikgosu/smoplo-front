@@ -1,9 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {DeleteCreative} from "../../store/actions/creatives.actions";
-import {AppState} from "../../store/state";
 import {ActivatedRoute} from "@angular/router";
-import {ERoutes} from "../../router/models";
+import {ListService} from "../../../services/list.service";
 
 @Component({
   selector: 'app-creative-card',
@@ -16,13 +13,11 @@ export class CardComponent {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _store: Store<AppState>
+    private _listService: ListService
   ) {
   }
 
   handleDelete() {
-    if (this.path === ERoutes.CREATIVES) {
-      this._store.dispatch(new DeleteCreative(this.listItem))
-    }
+    this.path && this._listService.deleteListItem(this.path, this.listItem)
   }
 }

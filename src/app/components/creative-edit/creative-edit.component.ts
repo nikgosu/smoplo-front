@@ -2,9 +2,8 @@ import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CreativeService} from "../../services/creative.service";
 import {Observable, Subject, takeUntil} from "rxjs";
-import {select, Store} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {CreateCreative, UpdateCreative} from "../../store/actions/creatives.actions";
-import {selectSelectedCreative} from "../../store/selectors/creatives.selector";
 import {ANIMATIONS} from "../../consts";
 import {AppState} from "../../store/state";
 
@@ -16,8 +15,7 @@ import {AppState} from "../../store/state";
 export class CreativeEditComponent {
   form$!: Observable<any>
   animations = ANIMATIONS
-  selectedCreative$ = this._store.pipe(select(selectSelectedCreative))
-  isCreativeFetched!: boolean
+  selectedCreative!: any
   unsubscribe$ = new Subject<void>()
 
   constructor(
@@ -29,19 +27,18 @@ export class CreativeEditComponent {
   }
 
   ngOnInit() {
-    this.selectedCreative$.pipe(takeUntil(this.unsubscribe$)).subscribe((creative) => {
-      creative?.name && this._creativeService.createForm(creative)
+    this._activatedRoute.data.pipe(takeUntil(this.unsubscribe$)).subscribe(({creative}) => {
+      this.selectedCreative = creative
+      creative && this._creativeService.createForm(creative)
+      if (!creative) {
+        this._creativeService.createForm()
+      }
     })
-    this._activatedRoute.data.pipe(takeUntil(this.unsubscribe$)).subscribe(({isCreativeFetched}) => {
-      this.isCreativeFetched = isCreativeFetched
-    })
-    if (!this.isCreativeFetched) {
-      this._creativeService.createForm()
-    }
+
   }
 
   handleCreativeSave() {
-    if (this.isCreativeFetched) {
+    if (this.selectedCreative) {
       this._store.dispatch(new UpdateCreative(this._creativeService.form.value.value))
     } else {
       this._store.dispatch(new CreateCreative(this._creativeService.form.value.value))

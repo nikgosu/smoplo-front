@@ -25,7 +25,7 @@ export class CampaignsEffects {
 
   getCampaign$ = createEffect(() => this._actions$.pipe(
     ofType<GetCampaign>(ECampaignsActions.GET_CAMPAIGN),
-    mergeMap(action => this._httpAPI.getCampaigns(action.payload)
+    mergeMap(action => this._httpAPI.getCampaign(action.payload)
       .pipe(map((campaign) => (new GetCampaignSuccess(campaign))))
     )
   ))

@@ -7,6 +7,9 @@ import {selectCreativesList} from "../store/selectors/creatives.selector";
 import {GetCampaigns} from "../store/actions/campaigns.actions";
 import {UserService} from "./user.service";
 import {selectCampaignsList} from "../store/selectors/campaigns.selector";
+import {CampaignsService} from "./campaigns.service";
+import {GetPlacements} from "../store/actions/placements.actions";
+import {selectPlacementsList} from "../store/selectors/placements.selector";
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +19,24 @@ export class ListService {
   constructor(
     private _store: Store<AppState>,
     private _userService: UserService,
+    private _campaignsService: CampaignsService,
   ) { }
 
-  getList(route?: string) {
+  getList(route?: string, activatedRoute?: any) {
+    const campaignId = activatedRoute._futureSnapshot.params.id
     switch (route) {
-      case ERoutes.CREATIVES:
-        this._store.dispatch(new GetCreatives())
-        return this._store.pipe(select(selectCreativesList))
       case ERoutes.CAMPAIGNS:
         this._store.dispatch(new GetCampaigns(this._userService.user._id))
         return this._store.pipe(select(selectCampaignsList))
+      case ERoutes.PLACEMENTS:
+        this._store.dispatch(new GetPlacements(this._userService.user._id))
+        return this._store.pipe(select(selectPlacementsList))
+      case ERoutes.CAMPAIGN_PLACEMENTS:
+        this._store.dispatch(new GetPlacements(campaignId))
+        return this._store.pipe(select(selectPlacementsList))
+      case ERoutes.CREATIVES:
+        this._store.dispatch(new GetCreatives())
+        return this._store.pipe(select(selectCreativesList))
       default:
         return null
     }

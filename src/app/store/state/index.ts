@@ -5,6 +5,11 @@ export interface CampaignsState {
   selectedCampaign: any | null
 }
 
+export interface PlacementsState {
+  placements: any[]
+  selectedPlacement: any | null
+}
+
 export interface CreativesState {
   creatives: CreativeModel[]
   selectedCreative: CreativeModel | null
@@ -18,4 +23,5 @@ export interface AppState {
   user: any
   campaigns: CampaignsState
   creatives: CreativesState,
+  placements: PlacementsState
 }

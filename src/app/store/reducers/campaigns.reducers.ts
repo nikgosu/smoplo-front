@@ -19,7 +19,8 @@ export const campaignsReducers = (state = initialCampaignsState, action: Campaig
     case ECampaignsActions.CREATE_CAMPAIGN_SUCCESS: {
       return {
         ...state,
-        campaigns: [...state.campaigns, action.payload]
+        campaigns: [...state.campaigns, action.payload],
+        selectedCampaign: action.payload
       }
     }
     default:

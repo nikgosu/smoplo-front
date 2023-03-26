@@ -6,7 +6,7 @@
     <mat-card-actions align="end">
       <button
         mat-flat-button color="primary"
-        routerLink="{{isCreatives ? 'creative/' + listItem._id : '/placements'}}"
+        routerLink="{{isCreatives ? 'creative/' + listItem._id : '/placements/' + listItem._id }}"
       >
         {{isCreatives ? 'Edit' : 'Open'}}
       </button>

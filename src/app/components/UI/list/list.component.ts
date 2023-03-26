@@ -24,7 +24,7 @@ export class ListComponent {
   ) {
     this.path = this._activatedRoute.snapshot.routeConfig?.path
     this.isCreatives = this.path === ERoutes.CREATIVES
-    this.data$ = this._listService.getList(this.path)
+    this.data$ = this._listService.getList(this.path, this._activatedRoute)
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

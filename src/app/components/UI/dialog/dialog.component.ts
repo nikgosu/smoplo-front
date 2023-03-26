@@ -33,6 +33,7 @@ export class DialogComponent {
   createForm() {
     switch (this.props.type) {
       case ERoutes.CAMPAIGNS:
+        console.log(1)
         this._campaignsService.createForm()
         this.form$ = this._campaignsService.form.asObservable()
         return
@@ -41,6 +42,8 @@ export class DialogComponent {
         this.form$ = this._placementsService.form.asObservable()
         return
       default:
+        this._placementsService.createForm()
+        this.form$ = this._placementsService.form.asObservable()
         return
     }
   }
@@ -49,9 +52,8 @@ export class DialogComponent {
       case ERoutes.CAMPAIGNS:
         this._campaignsService.createCampaign()
         return
-      case ERoutes.PLACEMENTS:
-        this._placementsService.createForm()
-        this.form$ = this._placementsService.form.asObservable()
+      case ERoutes.PLACEMENTS || ERoutes.CAMPAIGN_PLACEMENTS:
+        this._placementsService.createPlacement()
         return
       default:
         return

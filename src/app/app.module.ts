@@ -34,6 +34,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {DialogComponent} from './components/UI/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CampaignsEffects} from "./store/effects/campaigns.effects";
+import {PlacementsEffects} from "./store/effects/placements.effects";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import {CampaignsEffects} from "./store/effects/campaigns.effects";
   imports: [
     AppRoutingModule,
     StoreModule.forRoot(appReducers, {}),
-    EffectsModule.forRoot([CreativesEffects, UserEffects, CampaignsEffects]),
+    EffectsModule.forRoot([CreativesEffects, UserEffects, CampaignsEffects, PlacementsEffects]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,

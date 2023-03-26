@@ -19,6 +19,7 @@ const creativesRoutes = [
 
 const placementsRoutes = [
   {path: ERoutes.PLACEMENTS, component: ListComponent, canActivate: [AuthGuard]},
+  {path: ERoutes.CAMPAIGN_PLACEMENTS, component: ListComponent, canActivate: [AuthGuard]},
   {
     path: ERoutes.PLACEMENT,
     component: CreativeEditComponent,

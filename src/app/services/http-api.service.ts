@@ -56,4 +56,16 @@ export class HttpAPIService {
   createCampaign(campaign: any) {
     return this.http.post<CreativeModel>(BASE_URL + '/campaign', campaign)
   }
+
+  getPlacement(id: string) {
+    return this.http.get<any[]>(BASE_URL + '/placement/by_id', {params: {id}})
+  }
+
+  getPlacements(id: string) {
+    return this.http.get<any[]>(BASE_URL + '/placement', {params: {id}})
+  }
+
+  createPlacement(campaign: any) {
+    return this.http.post<CreativeModel>(BASE_URL + '/placement', campaign)
+  }
 }

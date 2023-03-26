@@ -1,5 +1,5 @@
 import {Routes} from "@angular/router";
-import {ListComponent} from "../../components/UI/list/list.component";
+import {ListComponent} from "../../components/list/list.component";
 import {AuthGuard} from "../../guards/auth.guard";
 import {CreativeEditComponent} from "../../components/creative-edit/creative-edit.component";
 import {ListItemResolver} from "../../resolvers/list-item.resolver";
@@ -8,6 +8,7 @@ import {ERoutes} from "../models";
 
 const creativesRoutes = [
   {path: ERoutes.CREATIVES, component: ListComponent, canActivate: [AuthGuard]},
+  {path: ERoutes.PLACEMENT_CREATIVES, component: ListComponent, canActivate: [AuthGuard]},
   {
     path: ERoutes.CREATIVE,
     component: CreativeEditComponent,
@@ -44,6 +45,7 @@ export const ROUTES: Routes = [
   ...placementsRoutes,
   ...campaignsRoutes,
   {path: ERoutes.LOGIN, component: LoginComponent},
+  { path: '**', redirectTo: 'campaigns'}
 ];
 
 

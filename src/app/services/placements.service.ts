@@ -2,16 +2,22 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserService} from "./user.service";
-import {Store} from "@ngrx/store";
+import {select, Store} from "@ngrx/store";
 import {AppState} from "../store/state";
 import {CreatePlacement} from "../store/actions/placements.actions";
 import {CampaignsService} from "./campaigns.service";
+import {selectCampaignsList} from "../store/selectors/campaigns.selector";
+import {selectPlacementsList, selectSelectedPlacement} from "../store/selectors/placements.selector";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlacementsService {
   form: BehaviorSubject<FormGroup> = new BehaviorSubject<FormGroup>({} as FormGroup)
+  placement!: any
+  placements!: any
+  placement$ = this._store.pipe(select(selectSelectedPlacement))
+  placements$ = this._store.pipe(select(selectPlacementsList))
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -19,6 +25,12 @@ export class PlacementsService {
     private _campaignsService: CampaignsService,
     private _store: Store<AppState>
   ) {
+    this.placements$.subscribe(placements => {
+      this.placements = placements
+    })
+    this.placement$.subscribe(placement => {
+      this.placement = placement
+    })
   }
 
   createForm(formValue: any = null, campaignsList: any = null) {

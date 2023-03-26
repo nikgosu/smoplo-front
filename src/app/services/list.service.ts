@@ -23,19 +23,24 @@ export class ListService {
   ) { }
 
   getList(route?: string, activatedRoute?: any) {
-    const campaignId = activatedRoute._futureSnapshot.params.id
+    const id = activatedRoute._futureSnapshot.params.id
     switch (route) {
       case ERoutes.CAMPAIGNS:
         this._store.dispatch(new GetCampaigns(this._userService.user._id))
         return this._store.pipe(select(selectCampaignsList))
       case ERoutes.PLACEMENTS:
+        this._store.dispatch(new GetCampaigns(this._userService.user._id))
         this._store.dispatch(new GetPlacements({userId: this._userService.user._id}))
         return this._store.pipe(select(selectPlacementsList))
       case ERoutes.CAMPAIGN_PLACEMENTS:
-        this._store.dispatch(new GetPlacements({campaignId: campaignId}))
+        this._store.dispatch(new GetPlacements({campaignId: id}))
         return this._store.pipe(select(selectPlacementsList))
       case ERoutes.CREATIVES:
-        this._store.dispatch(new GetCreatives())
+        this._store.dispatch(new GetPlacements({userId: this._userService.user._id}))
+        this._store.dispatch(new GetCreatives({userId: this._userService.user._id}))
+        return this._store.pipe(select(selectCreativesList))
+      case ERoutes.PLACEMENT_CREATIVES:
+        this._store.dispatch(new GetCreatives({placementId: id}))
         return this._store.pipe(select(selectCreativesList))
       default:
         return null

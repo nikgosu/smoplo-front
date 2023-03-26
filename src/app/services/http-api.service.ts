@@ -29,8 +29,8 @@ export class HttpAPIService {
     return this.http.get<CreativeModel>(BASE_URL + '/creative/by_id', {params: {id}})
   }
 
-  getCreatives() {
-    return this.http.get<CreativeModel[]>(BASE_URL + '/creative')
+  getCreatives(query: any) {
+    return this.http.get<CreativeModel[]>(BASE_URL + '/creative', {params: query})
   }
 
   createCreative(creative: CreativeModel) {

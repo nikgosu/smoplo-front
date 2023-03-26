@@ -35,7 +35,7 @@ export class CreativesEffects {
   ))
   getCreatives$ = createEffect(() => this._actions$.pipe(
     ofType<GetCreatives>(ECreativesActions.GET_CREATIVES),
-    mergeMap(() => this._httpAPI.getCreatives()
+    mergeMap(action => this._httpAPI.getCreatives(action.payload)
       .pipe(map(creatives => (new GetCreativesSuccess(creatives))))
     )
   ))

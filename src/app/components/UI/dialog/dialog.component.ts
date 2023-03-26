@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {ERoutes} from "../../../router/models";
 import {CampaignsService} from "../../../services/campaigns.service";
+import {CreativesService} from "../../../services/creatives.service";
 
 @Component({
   selector: 'app-dialog',
@@ -18,13 +19,13 @@ export class DialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    private _placementsService: PlacementsService,
     private _campaignsService: CampaignsService,
+    private _placementsService: PlacementsService,
+    private _creativesService: CreativesService,
     private _activatedRoute: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) props: any
   ) {
     this.props = props
-
   }
 
   ngOnInit() {
@@ -41,9 +42,13 @@ export class DialogComponent {
         this._placementsService.createForm()
         this.form$ = this._placementsService.form.asObservable()
         return
+      case ERoutes.CREATIVES:
+        this._creativesService.createForm()
+        this.form$ = this._creativesService.form.asObservable()
+        return
       default:
-        this._placementsService.createForm()
-        this.form$ = this._placementsService.form.asObservable()
+        this._creativesService.createForm()
+        this.form$ = this._creativesService.form.asObservable()
         return
     }
   }
@@ -54,6 +59,9 @@ export class DialogComponent {
         return
       case ERoutes.PLACEMENTS || ERoutes.CAMPAIGN_PLACEMENTS:
         this._placementsService.createPlacement(this.props.campaigns)
+        return
+      case ERoutes.CREATIVES:
+        this._creativesService.createCreative()
         return
       default:
         return

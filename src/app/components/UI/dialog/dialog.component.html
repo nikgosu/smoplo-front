@@ -11,15 +11,15 @@
     ></app-form-input>
     <app-select
       *ngIf="props.type !== routes.CAMPAIGNS"
-      [control]="form.get('campaignId')"
-      [options]="props.campaigns"
-      [placeholder]="'Campaign'"
+      [control]="props.type === routes.CAMPAIGNS ? form.get('campaignId') : form.get('placementId')"
+      [options]="props.optionList.list"
+      [placeholder]="props.optionList.placeholder"
     ></app-select>
     <app-select
-      *ngIf="props.type !== routes.CAMPAIGNS"
+      *ngIf="props.type !== routes.CAMPAIGNS && props.type !== routes.CREATIVES"
       [control]="form.get('size')"
-      [options]="props.sizes"
-      [placeholder]="'Size'"
+      [options]="props.sizes.list"
+      [placeholder]="props.sizes.placeholder"
     ></app-select>
   </form>
 </div>

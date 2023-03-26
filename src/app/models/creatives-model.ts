@@ -16,4 +16,5 @@ export interface CreativeModel {
 
 export interface Animation {
   name: string
+  _id: string
 }

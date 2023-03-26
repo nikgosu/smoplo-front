@@ -1,16 +1,15 @@
 <div
   class="container"
 >
+<!--  <button-->
+<!--    mat-flat-button color="accent"-->
+<!--    routerLink="creative-new"-->
+<!--    *ngIf="isCreatives"-->
+<!--  >-->
+<!--    New-->
+<!--  </button>-->
   <button
     mat-flat-button color="accent"
-    routerLink="creative-new"
-    *ngIf="isCreatives"
-  >
-    New
-  </button>
-  <button
-    mat-flat-button color="accent"
-    *ngIf="!isCreatives"
     (click)="openDialog('0ms', '0ms')"
   >
     New

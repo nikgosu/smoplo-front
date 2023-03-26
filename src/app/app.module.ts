@@ -19,7 +19,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {BrowserModule} from "@angular/platform-browser";
 import {MatListModule} from "@angular/material/list";
 import {NavBarComponent} from "./components/UI/nav-bar/nav-bar.component";
-import {ListComponent} from "./components/UI/list/list.component";
+import {ListComponent} from "./components/list/list.component";
 import {CardComponent} from "./components/UI/card/card.component";
 import {CreativeEditComponent} from "./components/creative-edit/creative-edit.component";
 import {LoginComponent} from "./components/login/login.component";

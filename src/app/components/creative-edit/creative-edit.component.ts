@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {CreativeService} from "../../services/creative.service";
+import {CreativesService} from "../../services/creatives.service";
 import {first, Observable} from "rxjs";
 import {ANIMATIONS} from "../../consts";
 
@@ -15,7 +15,7 @@ export class CreativeEditComponent {
   selectedCreative!: any
 
   constructor(
-    private _creativeService: CreativeService,
+    private _creativeService: CreativesService,
     private _activatedRoute: ActivatedRoute,
   ) {
     this.form$ = this._creativeService.form.asObservable()
@@ -33,10 +33,6 @@ export class CreativeEditComponent {
   }
 
   handleCreativeSave() {
-    if (this.selectedCreative) {
-      this._creativeService.createCreative()
-    } else {
-      this._creativeService.updateCreative()
-    }
+    this._creativeService.updateCreative()
   }
 }

@@ -30,6 +30,9 @@ export class GetCreativeSuccess implements Action {
 
 export class GetCreatives implements Action {
   public readonly type = ECreativesActions.GET_CREATIVES
+
+  constructor(public payload: any) {
+  }
 }
 
 export class GetCreativesSuccess implements Action {

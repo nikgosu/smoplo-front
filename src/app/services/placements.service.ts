@@ -21,17 +21,24 @@ export class PlacementsService {
   ) {
   }
 
-  createForm() {
-    let formGroup = this._formBuilder.group<any>({
-      name: '',
-      campaignId: this._campaignsService.campaign._id,
-      size: '',
-      userId: this._userService.user.userId
+  createForm(formValue: any = null, campaignsList: any = null) {
+    let campaignName
+    if (formValue) {
+      campaignName = campaignsList.find((campaign: any) => campaign._id === formValue.campaignId).name
+    }
+    const formGroup = this._formBuilder.group<any>({
+      name: formValue ? this.form.value.value.name : '',
+      campaignName: formValue ? campaignName : this._campaignsService.campaign.name,
+      campaignId: formValue ? this.form.value.value.campaignId : this._campaignsService.campaign._id,
+      size: formValue ? this.form.value.value.size : '',
+      userId: formValue ? this.form.value.value.userId : this._userService.user._id,
+      creatives: 0
     })
     this.form.next(formGroup)
   }
 
-  createPlacement() {
+  createPlacement(campaignsList?: any) {
+    this.createForm(this.form.value.value, campaignsList)
     this._store.dispatch(new CreatePlacement(this.form.value.value))
   }
 }

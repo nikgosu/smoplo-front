@@ -27,7 +27,7 @@ export class GetPlacementSuccess implements Action {
 export class GetPlacements implements Action {
   public readonly type = EPlacementsActions.GET_PLACEMENTS
 
-  constructor(public payload: string) {
+  constructor(public payload: any) {
   }
 }
 

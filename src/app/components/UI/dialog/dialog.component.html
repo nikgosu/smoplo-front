@@ -9,16 +9,17 @@
       [name]="'name'"
       [type]="'text'"
     ></app-form-input>
-    <app-form-input
+    <app-select
       *ngIf="props.type !== routes.CAMPAIGNS"
       [control]="form.get('campaignId')"
-      [name]="'campaign'"
-      [type]="'text'"
-    ></app-form-input>
+      [options]="props.campaigns"
+      [placeholder]="'Campaign'"
+    ></app-select>
     <app-select
       *ngIf="props.type !== routes.CAMPAIGNS"
       [control]="form.get('size')"
       [options]="props.sizes"
+      [placeholder]="'Size'"
     ></app-select>
   </form>
 </div>

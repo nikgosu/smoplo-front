@@ -6,6 +6,7 @@ import {CreativeModel} from "../../../models/creatives-model";
 import {ERoutes} from "../../../router/models";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
+import {CampaignsService} from "../../../services/campaigns.service";
 
 @Component({
   selector: 'app-creatives-list',
@@ -20,7 +21,8 @@ export class ListComponent {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _listService: ListService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _campaignsService: CampaignsService
   ) {
     this.path = this._activatedRoute.snapshot.routeConfig?.path
     this.isCreatives = this.path === ERoutes.CREATIVES
@@ -44,7 +46,9 @@ export class ListComponent {
         return {
           title: 'Create Placement',
           type: ERoutes.PLACEMENTS,
-          sizes: [{name: '300x600'}, {name: '1200x400'}, {name: '500x300'}]}
+          sizes: [{name: '300x600', _id: 1}, {name: '1200x400', _id: 2}, {name: '500x300', _id: 3}],
+          campaigns: this._campaignsService.campaigns
+        }
       default:
         return {title: 'Dialog', type: 'Any'}
     }

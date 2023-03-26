@@ -33,7 +33,8 @@ export class CampaignsService {
   createForm() {
     let formGroup = this._formBuilder.group<any>({
       name: '',
-      userId: this._userService.user._id
+      userId: this._userService.user._id,
+      placements: 0
     })
     this.form.next(formGroup)
   }

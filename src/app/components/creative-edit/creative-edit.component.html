@@ -6,14 +6,49 @@
   </div>
   <div class="controls" *ngIf="form.value">
     <form class="example-form" [formGroup]="form">
-      <app-form-input [control]="form.get('name')" [name]="'name'" [type]="'url'"></app-form-input>
-      <app-select [control]="form.get('animation')" [options]="animations"></app-select>
-      <app-slider [control]="form.get('horizontalPos')" [max]="100" [min]="-100">Horizontal Position</app-slider>
-      <app-slider [control]="form.get('verticalPos')" [max]="100" [min]="-100">Vertical Position</app-slider>
-      <app-slider [control]="form.get('imageSize')" [max]="100" [min]="0">Image Size</app-slider>
-      <app-slider [control]="form.get('width')" [max]="100" [min]="0">Width</app-slider>
-      <app-form-input [control]="form.get('imageSrc')" [name]="'imageSrc'" [type]="'text'"></app-form-input>
-      <button class="button" mat-flat-button color="accent" (click)="handleCreativeSave()">Save creative</button>
+      <app-form-input
+        [control]="form.get('name')"
+        [name]="'name'"
+        [type]="'url'"
+      ></app-form-input>
+      <app-select
+        [control]="form.get('animation')"
+        [options]="animations"
+        [placeholder]="'Animation'"
+      ></app-select>
+      <app-slider
+        [control]="form.get('horizontalPos')"
+        [max]="100"
+        [min]="-100"
+      >Horizontal Position</app-slider>
+      <app-slider
+        [control]="form.get('verticalPos')"
+        [max]="100"
+        [min]="-100"
+      >Vertical Position</app-slider>
+      <app-slider
+        [control]="form.get('imageSize')"
+        [max]="100"
+        [min]="0"
+      >Image Size</app-slider>
+      <app-slider
+        [control]="form.get('width')"
+        [max]="100"
+        [min]="0"
+      >Width</app-slider>
+      <app-form-input
+        [control]="form.get('imageSrc')"
+        [name]="'imageSrc'"
+        [type]="'text'"
+      ></app-form-input>
+      <button
+        class="button"
+        mat-flat-button
+        color="accent"
+        (click)="handleCreativeSave()"
+      >
+        Save creative
+      </button>
     </form>
   </div>
 </div>

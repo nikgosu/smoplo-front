@@ -61,8 +61,8 @@ export class HttpAPIService {
     return this.http.get<any[]>(BASE_URL + '/placement/by_id', {params: {id}})
   }
 
-  getPlacements(id: string) {
-    return this.http.get<any[]>(BASE_URL + '/placement', {params: {id}})
+  getPlacements(query: any) {
+    return this.http.get<any[]>(BASE_URL + '/placement', {params: query})
   }
 
   createPlacement(campaign: any) {

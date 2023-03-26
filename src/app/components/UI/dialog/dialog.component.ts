@@ -30,10 +30,10 @@ export class DialogComponent {
   ngOnInit() {
     this.createForm()
   }
+
   createForm() {
     switch (this.props.type) {
       case ERoutes.CAMPAIGNS:
-        console.log(1)
         this._campaignsService.createForm()
         this.form$ = this._campaignsService.form.asObservable()
         return
@@ -53,7 +53,7 @@ export class DialogComponent {
         this._campaignsService.createCampaign()
         return
       case ERoutes.PLACEMENTS || ERoutes.CAMPAIGN_PLACEMENTS:
-        this._placementsService.createPlacement()
+        this._placementsService.createPlacement(this.props.campaigns)
         return
       default:
         return

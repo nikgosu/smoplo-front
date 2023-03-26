@@ -29,10 +29,10 @@ export class ListService {
         this._store.dispatch(new GetCampaigns(this._userService.user._id))
         return this._store.pipe(select(selectCampaignsList))
       case ERoutes.PLACEMENTS:
-        this._store.dispatch(new GetPlacements(this._userService.user._id))
+        this._store.dispatch(new GetPlacements({userId: this._userService.user._id}))
         return this._store.pipe(select(selectPlacementsList))
       case ERoutes.CAMPAIGN_PLACEMENTS:
-        this._store.dispatch(new GetPlacements(campaignId))
+        this._store.dispatch(new GetPlacements({campaignId: campaignId}))
         return this._store.pipe(select(selectPlacementsList))
       case ERoutes.CREATIVES:
         this._store.dispatch(new GetCreatives())

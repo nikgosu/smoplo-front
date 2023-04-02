@@ -41,7 +41,7 @@ export class GetCampaignsSuccess implements Action {
 export class CreateCampaign implements Action {
   public readonly type = ECampaignsActions.CREATE_CAMPAIGN
 
-  constructor(public payload: CreativeModel) {
+  constructor(public payload: any) {
   }
 }
 

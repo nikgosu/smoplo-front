@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ListService} from "../../../services/list.service";
-import {ERoutes} from "../../../router/models";
+import {ListService} from "../../../../../services/list.service";
+import {ERoutes} from "../../../../../router/models";
 
 @Component({
-  selector: 'app-creative-card',
+  selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })

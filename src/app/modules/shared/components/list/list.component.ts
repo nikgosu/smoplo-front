@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
-import {ListService} from "../../services/list.service";
-import {CreativeModel} from "../../models/creatives-model";
-import {ERoutes} from "../../router/models";
+import {ListService} from "../../../../services/list.service";
+import {CreativeModel} from "../../../../models/creatives-model";
+import {ERoutes} from "../../../../router/models";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../UI/dialog/dialog.component";
-import {CampaignsService} from "../../services/campaigns.service";
-import {PlacementsService} from "../../services/placements.service";
+import {CampaignsService} from "../../../../services/campaigns.service";
+import {PlacementsService} from "../../../../services/placements.service";
 
 @Component({
-  selector: 'app-creatives-list',
+  selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })

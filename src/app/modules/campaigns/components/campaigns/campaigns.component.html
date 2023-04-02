@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="header">
+    <h1>Campaigns</h1>
+    <button
+      mat-flat-button color="accent"
+      (click)="openDialog('0ms', '0ms')"
+    >
+      New
+    </button>
+  </div>
+  <div class="list">
+    <div
+      class="card-container"
+      *ngFor="let campaign of campaigns$ | async"
+    >
+      <app-card [listItem]="campaign"></app-card>
+    </div>
+  </div>
+</div>
+
+<ng-template #dialogContent>
+  <h1 mat-dialog-title>Create Campaign</h1>
+  <div
+    mat-dialog-content
+  >
+    <form [formGroup]="form">
+      <app-form-input
+        [control]="form.get('name') | formControl"
+        [name]="'name'"
+        [type]="'text'"
+      ></app-form-input>
+    </form>
+    <div class="buttons" mat-dialog-actions>
+      <button
+        mat-flat-button
+        color="warn"
+        mat-dialog-close
+      >
+        Cancel
+      </button>
+      <button
+        mat-flat-button
+        color="accent"
+        mat-dialog-close
+        (click)="handleSave()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</ng-template>

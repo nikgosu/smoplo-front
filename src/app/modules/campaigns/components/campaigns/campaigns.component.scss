@@ -1,0 +1,29 @@
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px 60px;
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+    h1{
+      font-weight: 500;
+    }
+    button{
+      margin-bottom: 16px;
+    }
+  }
+  .card-container{
+    margin: 15px 0;
+  }
+  .content{
+  }
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+

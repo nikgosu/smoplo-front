@@ -1,10 +1,11 @@
 import {Routes} from "@angular/router";
-import {ListComponent} from "../../components/list/list.component";
+import {ListComponent} from "../../modules/shared/components/list/list.component";
 import {AuthGuard} from "../../guards/auth.guard";
-import {CreativeEditComponent} from "../../components/creative-edit/creative-edit.component";
+import {CreativeEditComponent} from "../../modules/shared/components/creative-edit/creative-edit.component";
 import {ListItemResolver} from "../../resolvers/list-item.resolver";
 import {LoginComponent} from "../../components/login/login.component";
 import {ERoutes} from "../models";
+import {CampaignsComponent} from "../../modules/campaigns/components/campaigns/campaigns.component";
 
 const creativesRoutes = [
   {path: ERoutes.CREATIVES, component: ListComponent, canActivate: [AuthGuard]},
@@ -30,7 +31,7 @@ const placementsRoutes = [
 ]
 
 const campaignsRoutes = [
-  {path: ERoutes.CAMPAIGNS, component: ListComponent, canActivate: [AuthGuard]},
+  {path: ERoutes.CAMPAIGNS, component: CampaignsComponent, canActivate: [AuthGuard]},
   {
     path: ERoutes.CAMPAIGN,
     component: CreativeEditComponent,
@@ -41,8 +42,8 @@ const campaignsRoutes = [
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: ERoutes.CAMPAIGNS, pathMatch: 'full' },
-  ...creativesRoutes,
-  ...placementsRoutes,
+  // ...creativesRoutes,
+  // ...placementsRoutes,
   ...campaignsRoutes,
   {path: ERoutes.LOGIN, component: LoginComponent},
   { path: '**', redirectTo: 'campaigns'}

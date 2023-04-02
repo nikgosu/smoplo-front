@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {CreativesService} from "../../services/creatives.service";
+import {CreativesService} from "../../../../services/creatives.service";
 import {first, Observable} from "rxjs";
-import {ANIMATIONS} from "../../consts";
+import {ANIMATIONS} from "../../../../consts";
 
 @Component({
   selector: 'app-creative-edit',

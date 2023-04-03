@@ -1,1 +1,68 @@
-<p>placements works!</p>
+<div class="main-container">
+  <div class="header">
+    <h1>Placements</h1>
+    <button
+      mat-flat-button color="accent"
+      (click)="openDialog('0ms', '0ms')"
+    >
+      New
+    </button>
+  </div>
+  <div class="list">
+    <div
+      class="card-container"
+      *ngFor="let placement of placements$ | async"
+    >
+      <app-card
+        [listItem]="placement"
+        [routerLink]="routerLink + placement['_id']"
+        (onDelete)="handlePlacementDelete($event)"
+      ></app-card>
+    </div>
+  </div>
+</div>
+
+<ng-template #dialogContent>
+  <h1 mat-dialog-title>Create Placement</h1>
+  <div
+    mat-dialog-content
+  >
+    <form
+      [formGroup]="form"
+      *ngIf="campaigns$ | async as campaigns"
+    >
+      <app-form-input
+        [control]="form.get('name') | formControl"
+        [name]="'name'"
+        [type]="'text'"
+      ></app-form-input>
+      <app-select
+        [control]="form.get('size') | formControl"
+        [options]="sizes"
+      >
+      </app-select>
+      <app-select
+        [control]="form.get('campaignId') | formControl"
+        [options]="campaigns"
+      >
+      </app-select>
+    </form>
+    <div class="main-buttons" mat-dialog-actions>
+      <button
+        mat-flat-button
+        color="warn"
+        mat-dialog-close
+      >
+        Cancel
+      </button>
+      <button
+        mat-flat-button
+        color="accent"
+        mat-dialog-close
+        (click)="handleSave()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</ng-template>

@@ -4,10 +4,11 @@ import { AppState } from '../../../../store/state';
 import { selectCurrentUser } from '../../../../store/selectors/user.selector';
 import { first } from 'rxjs';
 import { selectCampaignsList } from '../../../../store/selectors/campaigns.selector';
-import { CreateCampaign, GetCampaigns } from '../../../../store/actions/campaigns.actions';
+import { CreateCampaign, GetCampaign, GetCampaigns } from '../../../../store/actions/campaigns.actions';
 import { AbstractControl, FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/overlay'
+import { UserService } from '../../../../services/user.service'
 
 @Component({
   selector: 'app-campaigns',
@@ -20,6 +21,7 @@ export class CampaignsComponent {
     userId: '',
     placements: 0
   })
+  routerLink = '/placements/'
   user$ = this._store.pipe(select(selectCurrentUser))
   campaigns$ = this._store.pipe(select(selectCampaignsList))
 
@@ -28,13 +30,14 @@ export class CampaignsComponent {
   constructor(
     private _store: Store<AppState>,
     public dialog: MatDialog,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _userService: UserService
   ) {
   }
 
   ngOnInit() {
     this.user$.pipe(first()).subscribe(user => {
-      this._store.dispatch(new GetCampaigns(user._id))
+      this._store.dispatch(new GetCampaigns(this._userService.user._id))
       this.form.controls['userId'].setValue(user._id)
     })
   }
@@ -53,10 +56,11 @@ export class CampaignsComponent {
     });
   }
 
+  handleCampaignDelete(campaign: any) {
+
+  }
+
   handleSave() {
     this._store.dispatch(new CreateCampaign(this.form.value))
   }
-
-  public asFormControl = (formControl: AbstractControl | null): FormControl =>
-    formControl as FormControl;
 }

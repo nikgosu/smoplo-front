@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreativesComponent } from './creatives/creatives.component';
+import { CreativesComponent } from './components/creatives.component';
 import {SharedModule} from "../shared/shared.module";
 
 

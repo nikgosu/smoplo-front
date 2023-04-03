@@ -12,5 +12,5 @@ export const selectCampaignsList = createSelector(
 
 export const selectSelectedCampaign = createSelector(
   selectCampaigns,
-  (state: CampaignsState) => state.campaigns
+  (state: CampaignsState) => state.selectedCampaign
 )

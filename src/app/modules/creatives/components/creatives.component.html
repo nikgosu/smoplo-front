@@ -1,6 +1,6 @@
 <div class="main-container">
   <div class="header">
-    <h1>Campaigns</h1>
+    <h1>Creatives</h1>
     <button
       mat-flat-button color="accent"
       (click)="openDialog('0ms', '0ms')"
@@ -11,11 +11,11 @@
   <div class="list">
     <div
       class="card-container"
-      *ngFor="let campaign of campaigns$ | async"
+      *ngFor="let creative of creatives$ | async"
     >
       <app-card
-        [listItem]="campaign"
-        [routerLink]="routerLink + campaign['_id']"
+        [listItem]="creative"
+        [routerLink]="routerLink + creative['_id']"
         (onDelete)="handleCampaignDelete($event)"
       ></app-card>
     </div>
@@ -27,12 +27,26 @@
   <div
     mat-dialog-content
   >
-    <form [formGroup]="form">
+    <form
+      [formGroup]="form"
+    >
       <app-form-input
         [control]="form.get('name') | formControl"
         [name]="'name'"
         [type]="'text'"
       ></app-form-input>
+      <app-select
+        *ngIf="campaigns$ | async as campaigns"
+        [control]="form.get('campaignId') | formControl"
+        [options]="campaigns"
+      >
+      </app-select>
+      <app-select
+        *ngIf="placements$ | async as placements"
+        [control]="form.get('placementId') | formControl"
+        [options]="placements"
+      >
+      </app-select>
     </form>
     <div class="main-buttons" mat-dialog-actions>
       <button

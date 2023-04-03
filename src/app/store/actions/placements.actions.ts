@@ -41,7 +41,7 @@ export class GetPlacementsSuccess implements Action {
 export class CreatePlacement implements Action {
   public readonly type = EPlacementsActions.CREATE_PLACEMENT
 
-  constructor(public payload: CreativeModel) {
+  constructor(public payload: any) {
   }
 }
 

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ListService} from "../../../../../services/list.service";
 import {ERoutes} from "../../../../../router/models";
@@ -10,8 +10,11 @@ import {ERoutes} from "../../../../../router/models";
 })
 export class CardComponent {
   @Input() listItem: any
+  @Input() routerLink!: string
+  @Output() onDelete = new EventEmitter<any>()
   path!: string
   isCreatives!: boolean
+
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -42,6 +45,6 @@ export class CardComponent {
   }
 
   handleDelete() {
-    this.path && this._listService.deleteListItem(this.path, this.listItem)
+    this.onDelete.emit(this.listItem)
   }
 }

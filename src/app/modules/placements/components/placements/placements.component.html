@@ -15,7 +15,7 @@
     >
       <app-card
         [listItem]="placement"
-        [routerLink]="routerLink + placement['_id']"
+        [myRouterLink]="routerLink + placement['_id']"
         (onDelete)="handlePlacementDelete($event)"
       ></app-card>
     </div>

@@ -10,7 +10,7 @@ import {ERoutes} from "../../../../../router/models";
 })
 export class CardComponent {
   @Input() listItem: any
-  @Input() routerLink!: string
+  @Input() myRouterLink!: string
   @Output() onDelete = new EventEmitter<any>()
   path!: string
   isCreatives!: boolean
@@ -25,23 +25,6 @@ export class CardComponent {
   ngOnInit() {
     this.path = this._activatedRoute.snapshot.routeConfig?.path ?? ''
     this.isCreatives = this.path === ERoutes.CREATIVES || this.path === ERoutes.PLACEMENT_CREATIVES
-  }
-
-  getRouterLink() {
-    switch (this.path) {
-      case ERoutes.CAMPAIGNS:
-        return '/placements/' + this.listItem._id
-      case ERoutes.CAMPAIGN_PLACEMENTS:
-        return '/creatives/' + this.listItem._id
-      case ERoutes.PLACEMENTS:
-        return '/creatives/' + this.listItem._id
-      case ERoutes.CREATIVES:
-        return 'creative/' + this.listItem._id
-      case ERoutes.PLACEMENT_CREATIVES:
-        return '/creatives/creative/' + this.listItem._id
-      default:
-        return ''
-    }
   }
 
   handleDelete() {

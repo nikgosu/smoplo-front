@@ -1,5 +1,4 @@
 import {Routes} from "@angular/router";
-import {ListComponent} from "../../modules/shared/components/list/list.component";
 import {AuthGuard} from "../../guards/auth.guard";
 import {CreativeEditComponent} from "../../modules/shared/components/creative-edit/creative-edit.component";
 import {ListItemResolver} from "../../resolvers/list-item.resolver";

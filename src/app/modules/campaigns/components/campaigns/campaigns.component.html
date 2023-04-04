@@ -15,7 +15,7 @@
     >
       <app-card
         [listItem]="campaign"
-        [routerLink]="routerLink + campaign['_id']"
+        [myRouterLink]="routerLink + campaign['_id']"
         (onDelete)="handleCampaignDelete($event)"
       ></app-card>
     </div>

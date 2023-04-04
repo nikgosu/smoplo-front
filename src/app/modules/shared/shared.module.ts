@@ -13,7 +13,6 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {NavBarComponent} from "./components/UI/nav-bar/nav-bar.component";
-import {ListComponent} from "./components/list/list.component";
 import {CardComponent} from "./components/UI/card/card.component";
 import {CreativeEditComponent} from "./components/creative-edit/creative-edit.component";
 import {LoginComponent} from "../../components/login/login.component";
@@ -30,7 +29,6 @@ import { SideNavContainerComponent } from './components/UI/side-nav-container/si
 @NgModule({
   declarations: [
     NavBarComponent,
-    ListComponent,
     CardComponent,
     CreativeEditComponent,
     LoginComponent,
@@ -61,7 +59,6 @@ import { SideNavContainerComponent } from './components/UI/side-nav-container/si
   ],
   exports: [
     NavBarComponent,
-    ListComponent,
     CardComponent,
     CreativeEditComponent,
     LoginComponent,

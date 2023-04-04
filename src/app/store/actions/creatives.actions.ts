@@ -45,7 +45,7 @@ export class GetCreativesSuccess implements Action {
 export class CreateCreative implements Action {
   public readonly type = ECreativesActions.CREATE_CREATIVE
 
-  constructor(public payload: CreativeModel) {
+  constructor(public payload: any) {
   }
 }
 

@@ -8,13 +8,14 @@ import { UserService } from '../../../services/user.service'
 import { selectCurrentUser } from '../../../store/selectors/user.selector'
 import { selectCampaignsList, selectSelectedCampaign } from '../../../store/selectors/campaigns.selector'
 import { selectPlacementsList, selectSelectedPlacement } from '../../../store/selectors/placements.selector'
-import { CreateCampaign, GetCampaign, GetCampaigns } from '../../../store/actions/campaigns.actions'
+import { GetCampaigns } from '../../../store/actions/campaigns.actions'
 import { selectCreativesList } from '../../../store/selectors/creatives.selector'
 import { first } from 'rxjs/internal/operators/first'
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import { filter } from 'rxjs/internal/operators/filter'
 import { GetPlacement, GetPlacements } from '../../../store/actions/placements.actions'
-import { GetCreatives } from '../../../store/actions/creatives.actions'
+import { CreateCreative, DeleteCreative, GetCreatives } from '../../../store/actions/creatives.actions'
+import { CreativeModel } from '../../../models/creatives-model'
 
 @Component({
   selector: 'app-creatives',
@@ -23,7 +24,7 @@ import { GetCreatives } from '../../../store/actions/creatives.actions'
 })
 export class CreativesComponent {
 
-  form = this._formBuilder.group<any>({
+  form = this._formBuilder.group<CreativeModel>({
     name: '',
     animation: 'from top',
     height: 100,
@@ -34,9 +35,9 @@ export class CreativesComponent {
     imageSrc: 'img',
     userId: '',
     campaignId: '',
-    placementId: '',
+    placementId: ''
   })
-  routerLink = '/placements/'
+  routerLink = '/creatives/creative/'
   id!: string
 
   user$ = this._store.pipe(select(selectCurrentUser))
@@ -46,7 +47,6 @@ export class CreativesComponent {
   placements$ = this._store.pipe(select(selectPlacementsList))
   creatives$ = this._store.pipe(select(selectCreativesList))
 
-
   @ViewChild('dialogContent') dialogContent!: ComponentType<unknown> | TemplateRef<unknown>
 
   constructor(
@@ -54,7 +54,7 @@ export class CreativesComponent {
     public dialog: MatDialog,
     private _formBuilder: FormBuilder,
     private _userService: UserService,
-    private _activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute
   ) {
   }
 
@@ -98,12 +98,12 @@ export class CreativesComponent {
     });
   }
 
-  handleCampaignDelete(campaign: any) {
-
+  handleCreativeDelete(creative: any) {
+    this._store.dispatch(new DeleteCreative(creative._id))
   }
 
   handleSave() {
-    this._store.dispatch(new CreateCampaign(this.form.value))
+    this._store.dispatch(new CreateCreative(this.form.value))
   }
 
 }

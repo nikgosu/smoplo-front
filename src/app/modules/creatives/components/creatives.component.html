@@ -15,8 +15,8 @@
     >
       <app-card
         [listItem]="creative"
-        [routerLink]="routerLink + creative['_id']"
-        (onDelete)="handleCampaignDelete($event)"
+        [myRouterLink]="routerLink + creative['_id']"
+        (onDelete)="handleCreativeDelete($event)"
       ></app-card>
     </div>
   </div>

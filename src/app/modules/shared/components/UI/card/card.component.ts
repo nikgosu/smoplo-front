@@ -30,4 +30,7 @@ export class CardComponent {
   handleDelete() {
     this.onDelete.emit(this.listItem)
   }
+  newConflictedMethod() {
+    console.log(1)
+  }
 }

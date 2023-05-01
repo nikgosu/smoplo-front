@@ -30,4 +30,7 @@ export class CardComponent {
   handleDelete() {
     this.onDelete.emit(this.listItem)
   }
+  secondMethod() {
+    console.log('second')
+  }
 }
